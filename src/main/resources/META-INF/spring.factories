@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.lw.common.aliyun.GreenImageScan,\
-  com.lw.common.aliyun.GreenTextScan
+  com.lw.common.aliyun.GreenTextScan,\
+  com.lw.common.tess4j.Tess4jClient.doOCR
