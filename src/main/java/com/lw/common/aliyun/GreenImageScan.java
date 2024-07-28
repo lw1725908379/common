@@ -15,20 +15,22 @@ import com.aliyuncs.profile.IClientProfile;
 import com.lw.common.aliyun.util.ClientUploader;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "aliyun")
 public class GreenImageScan {
 
-    private String accessKeyId;
-    private String secret;
-    private String scenes;
+    @Resource
+    private AliyunProperties aliyunProperties;
+
+    private String accessKeyId = aliyunProperties.getAccessKeyId();
+    private String secret = aliyunProperties.getSecret();
+    private String scenes = aliyunProperties.getScenes();
 
     public Map imageScan(List<byte[]> imageList) throws Exception {
         IClientProfile profile = DefaultProfile

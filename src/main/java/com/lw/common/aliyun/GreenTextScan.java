@@ -14,19 +14,20 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "aliyun")
 public class GreenTextScan {
 
-    private String accessKeyId;
-    private String secret;
+    @Resource
+    private AliyunProperties aliyunProperties;
+    private String accessKeyId = aliyunProperties.getAccessKeyId();
+    private String secret = aliyunProperties.getSecret();
 
     public Map greeTextScan(String content) throws Exception {
         System.out.println(accessKeyId);
